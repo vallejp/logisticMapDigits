@@ -1,6 +1,6 @@
 from mpmath import *
 from Pipeline import AbstractPipelineClass
-from Methods import save_iteration, cycles, fixed, frequency_experiment
+from Methods import save_iteration, cycles, fixed, frequency_experiment, attraction
 
 class DigitsPipeline(AbstractPipelineClass):
     def __init__(self,
@@ -12,6 +12,7 @@ class DigitsPipeline(AbstractPipelineClass):
                  max_fixed_iteration,
                  iteration_compare,
                  s_f,
+                 xfixed,
                  ):
         self.u = u
         self.x0 = x0
@@ -21,6 +22,7 @@ class DigitsPipeline(AbstractPipelineClass):
         self.max_fixed_iteration = max_fixed_iteration
         self.iteration_compare = iteration_compare
         self.s_f = s_f
+        self.xfixed = xfixed
     
     def iteration(self):
         print(f"\nGenerating {self.number_iterations} iteration of logistic map with x0 = {self.x0} and u = {self.u}...")
@@ -41,16 +43,22 @@ class DigitsPipeline(AbstractPipelineClass):
         print(f"\nFrenquecy experiment...")
         frequency_experiment(self.u, self.s_f, self.max_position)
         print("Finished")
+
+    def attraction(self):
+        print(f"Attraction experiment...")
+        attraction(self.u, self.iteration_compare, self.xfixed)
+        print("Finished")
     
 if __name__ == '__main__':
-    u = mpf('3.98')
-    x0 = mpf('0.6')
+    u = mpf('4.0')
+    x0 = mpf('0.07')
     accuracy = 10
     number_iterations = 10
-    max_position = 3
-    max_fixed_iteration = 20
-    iteration_compare = 1
+    max_position = 1
+    max_fixed_iteration = 15
+    iteration_compare = 2
     s_f = 1
+    xfixed = mpf('0.56')
 
     pipe = DigitsPipeline(
         u=u,
@@ -61,9 +69,11 @@ if __name__ == '__main__':
         max_fixed_iteration=max_fixed_iteration,
         iteration_compare=iteration_compare,
         s_f=s_f,
+        xfixed=xfixed,
     )
 
     pipe.iteration()
     pipe.period()
     pipe.fixed()
     pipe.frenquecy()
+    pipe.attraction()

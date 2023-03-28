@@ -129,7 +129,7 @@ def fixed(u, max_fixed_iteration, iteration_compare):
                     y = iteration_logistic(y, u, k)
 
                 if str(y) == float_correct(xcurr, k):
-                    file = open(fixedpath + f'/classes _u{u}.txt', 'a')
+                    file = open(fixedpath + f'/classes_u{u}.txt', 'a')
                     file.write(str(y) + "\n")
                     file.close()
                     size_compare.append(str(y))
@@ -153,7 +153,7 @@ def fixed(u, max_fixed_iteration, iteration_compare):
                                 y = iteration_logistic(y, u, k_temp)
 
                             if str(y) == float_correct(xcurr, k_temp):
-                                file = open(fixedpath + f'/classes _u{u}.txt', 'a')
+                                file = open(fixedpath + f'/classes_u{u}.txt', 'a')
                                 file.write(str(y) + "\n")
                                 file.close()
                                 xfixed_tmp = xcurr
@@ -215,3 +215,33 @@ def frequency_experiment(u, s_f, max_position):
 
             file.write(f"Average: {avg}\n\n\n")
             file.close()
+
+
+def attraction(u, iteration_compare, xfixed):
+    # Create the directory
+    newpath = './results' 
+    if not os.path.exists(newpath):
+        os.makedirs(newpath)
+
+    fixedpath = f'./results/attraction_u{str(u)[-1]}'
+    if not os.path.exists(fixedpath):
+        os.makedirs(fixedpath)
+
+    k = len(str(xfixed)) - 2
+
+    xcurr = mpf("1.0") / 10**k
+    step = mpf("1.0") / 10**k
+    y = mpf("0.0")
+
+    for j in range(10**k):
+        y = xcurr 
+        i = 0
+        for p in range(iteration_compare):
+            y = iteration_logistic(y, u, k)
+            i += 1
+        
+        if str(y) == float_correct(xfixed, k):
+            file = open(fixedpath + f'/classes_u{u}.txt', 'a')
+            file.write(str(xcurr) + "\n")
+            file.close()
+        xcurr += step

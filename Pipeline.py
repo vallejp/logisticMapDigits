@@ -13,3 +13,6 @@ class AbstractPipelineClass:
     
     def frenquecy(self):
         raise NotImplementedError
+    
+    def attraction(self):
+        raise NotImplementedError
