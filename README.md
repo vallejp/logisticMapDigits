@@ -21,18 +21,30 @@ pip install -r requirements.txt
     - u: logistic map parameter control
     - accuracy: number of last decimal places that will be iterated
     
-- fixed(): this method finds the existing fixed digits in the logistic map for a given mu.
+- fixed(): This method finds the existing fixed digits in the logistic map for a given mu.
   - Parameters:
     - u: logistic map parameter control
     - max_fixed_iteration: maximum number of iterations to find the fixed digits
     - iteration_compare: number of iteration to comparer the seed with the final iteration value
     
 - period(): This method finds cycles of periodic digits
- - Parameters:
-  - x0: initial condition
-  - u: logistic map parameter control
-  - accuracy: number of last decimal places that will be iterated
-  - max_position: maximum decimal position that will be scanned
+  - Parameters:
+    - x0: initial condition
+    - u: logistic map parameter control
+    - accuracy: number of last decimal places that will be iterated
+    - max_position: maximum decimal position that will be scanned
+
+- frenquecy(): This method analyzes the frequency of the numbers present in the cycles of the periodic digits (to run this method you need to run the period() first)
+  - Parameters:
+    - u: logistic map parameter control
+    - s_f: number of decimal places the fixed digit occupies
+    - max_position: maximum decimal position that will be scanned
+
+- attraction(): This method finds the seeds that are attracted to a certain fixed digit
+  - Parameters:
+    - u: logistic map parameter control
+    - iteration_compare: number of iteration to comparer the seed with the final iteration value
+    - xfixed: the fixed digit value
 
 ## Citing
 
