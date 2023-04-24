@@ -1,6 +1,6 @@
 # Patterns on Logistic Map: back to front
 
-This repo is the official python implementation of the methods in: "[Patterns on Logistic Map: back to front](https://arxiv.org/abs/2212.01459)". A brief description of the scientific discoveries described in the article and how to reproduce the results can be found on the website: [here](https://scg.ifsc.usp.br/lmdigits/).
+This repo is the official python implementation of the methods in: "[Patterns on Logistic Map: back to front](https://arxiv.org/abs/2212.01459)". A brief tutorial can be found on the website: [here](https://scg.ifsc.usp.br/lmdigits/).
 
 ## Getting Started
 ### Environment Requirements
